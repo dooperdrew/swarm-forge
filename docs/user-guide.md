@@ -30,7 +30,7 @@ Comprehensive user manual and technical guide for **{{PROJECT_NAME}}**.
 ## 2. Installation & Setup
 
 ### Method 1: Portable Archive (Recommended)
-1. Download the latest release `.zip` from **[GitHub Releases]({{REPO_URL}}/releases)**.
+1. Download the latest release `.zip` from **[GitHub Releases](https://{{REPO_URL}}/releases)**.
 2. Extract the archive into a folder of your choice (e.g. `%LOCALAPPDATA%\Programs\{{PROJECT_NAME}}`).
 3. Run `{{PROJECT_NAME}}.exe` or double-click `setup.cmd` to set up shortcuts.
 
@@ -72,7 +72,7 @@ Settings are stored in human-readable configuration files located at:
 **A:** Ensure the application has write permissions to `%APPDATA%\{{PROJECT_NAME}}\`. If running in portable mode, verify the directory is not marked read-only.
 
 ### Q: How do I report a bug or issue?
-**A:** Please open an issue on **[GitHub Issues]({{REPO_URL}}/issues)** using our Bug Report template.
+**A:** Please open an issue on **[GitHub Issues](https://{{REPO_URL}}/issues)** using our Bug Report template.
 
 ---
 

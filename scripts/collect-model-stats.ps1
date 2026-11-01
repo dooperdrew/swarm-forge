@@ -52,7 +52,7 @@ if (Test-Path $StatsFile) {
 }
 
 function Add-ModelMeasurement([string]$ModelName, [double]$DurationSecs, [double]$TokenCount, [bool]$IsSuccess) {
-    if ([string]::IsNullOrWhiteSpace($ModelName)) { return }
+    if ([string]::IsNullOrWhiteSpace($ModelName) -or ($ModelName -match '^[-—]+$') -or ($ModelName -notmatch '^[a-zA-Z]')) { return }
     $ModelName = $ModelName.Trim().ToLowerInvariant()
     
     if (-not $Stats.ContainsKey($ModelName)) {
@@ -118,7 +118,7 @@ if (Test-Path $FallbackFile) {
         if ($Line -match '\|\s*[^\|]+\s*\|\s*[^\|]+\s*\|\s*([\w_-]+)\s*\|\s*([\w_-]+)\s*\|\s*([^\|]+)\s*\|') {
             $TargetModel = $matches[1].Trim()
             $UsedModel = $matches[2].Trim()
-            if ($TargetModel -ne "-" -and $TargetModel -ne "Target model") {
+            if ($TargetModel -and ($TargetModel -notmatch '^[-—]+$') -and ($TargetModel -ne "Target model") -and ($TargetModel -match '^[a-zA-Z]')) {
                 Add-ModelMeasurement -ModelName $TargetModel -DurationSecs 0 -TokenCount 0 -IsSuccess $false
                 Add-ModelMeasurement -ModelName $UsedModel -DurationSecs 2.0 -TokenCount 500 -IsSuccess $true
             }
