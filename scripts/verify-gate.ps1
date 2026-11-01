@@ -122,12 +122,13 @@ switch ($Stack) {
 
         # Automated Tests
         Invoke-Stage "Automated Tests" {
+            $TestThreads = [System.Environment]::ProcessorCount
             if ($Mode -eq "Fast") {
                 # Fast unit tests with concurrency
-                cargo test --lib -- --test-threads=auto
+                cargo test --lib -- --test-threads=$TestThreads
             } else {
                 # Full test suite across workspace
-                cargo test --workspace -- --test-threads=auto
+                cargo test --workspace -- --test-threads=$TestThreads
             }
             if ($LASTEXITCODE -ne 0) { throw "cargo test failed" }
         }

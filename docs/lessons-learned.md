@@ -6,6 +6,7 @@ Generic lessons (not tied to this project) are tagged **[KIT]** and get promoted
 
 | Date | Context (task / conversation) | What happened | Rule / fix adopted | Scope |
 |---|---|---|---|---|
+| 2026-11-01 | Cargo Test Concurrency Parameter | Passing `--test-threads=auto` to standard `cargo test` triggers `invalid digit found in string` | Use `[System.Environment]::ProcessorCount` to supply an integer thread count to `--test-threads` | [KIT] |
 | 2026-11-01 | Task Parallelization & Worktree Isolation | Running parallel tasks or reviewing Copilot PRs in the primary workspace caused branch churn and build invalidation | Use isolated sibling git worktrees (`.worktrees/task-<id>` via `scripts/manage-worktree.ps1`) for concurrent worker execution | [KIT] |
 | 2026-11-01 | Verification Gate Latency & Run Optimization | Running full clean builds and all test suites on every minor worker task created excessive waiting latency | Implement a Tiered Verification Gate (`scripts/verify-gate.ps1` with `-Mode Fast` for workers and `-Mode Full` for Sole Committer) | [KIT] |
 | 2026-11-01 | Antigravity Skill Scoping & Token Economics | Global skills in `~/.gemini/config/skills/` load in every session and exhaust the 20,000 token budget | Default all skills to workspace scope (`.agents/skills/` - 0 global tokens); use `scripts/manage-skill.ps1` to promote only cross-project utilities globally | [KIT] |
