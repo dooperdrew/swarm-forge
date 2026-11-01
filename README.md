@@ -3,6 +3,8 @@
 [![Spec-First](https://img.shields.io/badge/Architecture-Spec--First-blue.svg)](docs/README.md)
 [![Agent-Ready](https://img.shields.io/badge/AI-Agent--Ready-success.svg)](AGENTS.md)
 [![Multi-Agent](https://img.shields.io/badge/Workflow-Antigravity%20%2B%20Copilot-orange.svg)](docs/multi-agent-methodology.md)
+[![Model-Optimized](https://img.shields.io/badge/Model-Self--Tuning-brightgreen.svg)](docs/model-optimization-report.md)
+[![Parallel-Worktrees](https://img.shields.io/badge/Worktrees-Isolated%20Parallel-teal.svg)](scripts/run-parallel-agents.ps1)
 [![CI/CD](https://img.shields.io/badge/GitHub-Actions%20CI%2FCD-2088FF.svg)](.github/workflows/ci.yml)
 [![Verification Gate](https://img.shields.io/badge/Quality-Gated-purple.svg)](AGENTS.md#6-task-lifecycle)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -150,7 +152,11 @@ The repository includes pre-configured automation scripts in `scripts/`:
 
 ```text
 ├── .agents/                        # 🆕 Workspace-scoped agent skills & rules (zero global token cost)
+│   ├── config/
+│   │   ├── model-default.toml      # Active repository default model routing policy
+│   │   └── model-stats.json        # Quantitative runtime metrics & token economics database
 │   ├── skills/
+│   │   ├── model-optimizer/SKILL.md # Autonomous monitoring & dynamic model routing optimizer
 │   │   ├── project-qa/SKILL.md     # Workspace skill for running autonomous UI & accessibility QA
 │   │   └── skill-manager/SKILL.md  # Workspace skill for scoping, promoting & demoting agent skills
 │   └── rules/
@@ -163,7 +169,7 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   │   ├── feature_request.yml     # Feature requests tied to MoSCoW priorities
 │   │   └── qa_verification.yml     # Empirical manual / hardware QA verification report
 │   ├── workflows/
-│   │   ├── ci.yml                  # Automated PR & push verification gate
+│   │   ├── ci.yml                  # Automated PR & push verification gate with matrix tasks
 │   │   └── release.yml             # Tag-triggered GitHub Releases and asset publishing
 │   ├── copilot-instructions.md     # Binding instructions for GitHub Copilot (Agent & IDE)
 │   └── pull_request_template.md    # PR template enforcing verification gate checks & Draft PR rules
@@ -183,18 +189,24 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   ├── user-guide.md               # End-user documentation and troubleshooting FAQ
 │   ├── lessons-learned.md          # Living log of friction points and rules adopted
 │   ├── model-fallback-log.md       # Audit trail for downgraded agent runs
+│   ├── model-optimization-report.md # Living audit log for automated model routing tuning
+│   ├── skill-scope.md              # Local vs Global skill scoping & token economics guide
 │   ├── release-methodology.md      # SemVer, version source of truth, and release checklist
 │   ├── retrospective.md            # Milestone retrospective and token economics template
 │   └── README.md                   # Comprehensive guide to the documentation system
 ├── scripts/
+│   ├── apply-model-optimisation.ps1 # Evaluates model performance and tunes default routing
+│   ├── collect-model-stats.ps1     # Scans execution logs and computes model statistics
 │   ├── generate-manifests.ps1      # WinGet & Scoop manifest generator
 │   ├── install.ps1                 # Zero-elevation user-level installer
 │   ├── installer.iss               # Inno Setup native Windows installer template
 │   ├── manage-skill.ps1            # Scaffolds, lists, promotes, and demotes skills (Local vs Global)
 │   ├── manage-worktree.ps1         # Automates isolated Git worktrees for parallel agent tasks
 │   ├── package-release.ps1         # Automated release bundler & SHA-256 calculator
+│   ├── run-parallel-agents.ps1     # Multi-agent parallel task orchestrator across worktrees
 │   ├── run-qa.ps1                  # Autonomous UI crawl launcher using ui-qa-tester
 │   ├── setup-wizard.ps1            # Graphical & console guided Windows setup wizard
+│   ├── start-model-optimiser.ps1   # Continuous background daemon for model optimization
 │   ├── uninstall.ps1               # Clean application and shortcut uninstaller
 │   └── verify-gate.ps1             # Tiered verification gate runner (Fast incremental vs Full)
 ├── setup.cmd                       # Double-clickable Windows setup launcher

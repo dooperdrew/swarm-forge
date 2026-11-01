@@ -31,7 +31,9 @@ param(
     [ValidateSet("Auto", "Rust", "Node", "Python", "Go", "Template")]
     [string]$Stack = "Auto",
 
-    [switch]$SkipBuild
+    [switch]$SkipBuild,
+
+    [switch]$DryRun
 )
 
 $ErrorActionPreference = "Stop"
@@ -85,6 +87,10 @@ $FailedStages = @()
 
 function Invoke-Stage([string]$StageName, [scriptblock]$Action) {
     Write-Host "`n>> Stage: $StageName" -ForegroundColor Yellow
+    if ($DryRun) {
+        Write-Host "   [DRY-RUN] Stage planned for execution." -ForegroundColor Gray
+        return
+    }
     $StageWatch = [System.Diagnostics.Stopwatch]::StartNew()
     try {
         & $Action

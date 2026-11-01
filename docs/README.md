@@ -62,6 +62,8 @@ flowchart TD
 | [`decisions/`](decisions/) | **Architecture Decision Records (ADR)** | Lightweight records using [`0000-template.md`](decisions/0000-template.md) capturing context, choices considered, and rationale. |
 | [`lessons-learned.md`](lessons-learned.md) | **Living Memory & Rules Engine** | Feedback log turning user corrections and debugging insights into enforceable engineering rules. Generic rules tagged `[KIT]` feed back into upstream tooling. |
 | [`model-fallback-log.md`](model-fallback-log.md) | **Model Routing & Quota Audit** | Audit log tracking tasks run on fallback or lower-tier models, creating mandatory review items during M5 hardening. |
+| [`model-optimization-report.md`](model-optimization-report.md) | **Model Optimization & Token Economics** | Autonomous audit log tracking empirical model performance, latency, token spend, and automatic policy tuning. |
+| [`skill-scope.md`](skill-scope.md) | **Skill Scope & Token Optimization** | Architecture guide for managing Local (workspace, 0 global tokens) vs Global Antigravity skills. |
 | [`release-methodology.md`](release-methodology.md) | **Release Engineering** | SemVer definitions, single source of version truth, automated release scripts (`scripts/package-release.ps1`), and GitHub Actions release automation. |
 | [`retrospective.md`](retrospective.md) | **Milestone Retrospective** | Timeline, empirical failure analysis, multi-agent token economics, and lessons promoted to global guidelines. |
 

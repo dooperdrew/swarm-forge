@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # Toolchain setup placeholder (uncomment and configure for your stack)
       # - name: Setup Toolchain
@@ -41,6 +43,8 @@ jobs:
         with:
           files: |
             dist/*.zip
+            dist/*.sha256
+            dist/*-Setup.exe
             ${{ env.RELEASE_BUNDLE }}
           generate_release_notes: true
           draft: false

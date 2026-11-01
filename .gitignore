@@ -46,11 +46,12 @@ env/
 *.cert
 
 # -----------------------------------------------------------------------------
-# Local QA & Testing Telemetry (ui-qa-tester)
+# Local QA & Testing Telemetry (ui-qa-tester / Antigravity)
 # -----------------------------------------------------------------------------
 qa-reports/
 qa-screenshots/
 qa-output/
+.system_generated/
 *.log
 
 # -----------------------------------------------------------------------------

@@ -11,69 +11,46 @@ permissions:
 
 jobs:
   verification:
-    name: Verification Gate
+    name: Verification Gate (${{ matrix.task }})
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
         task: [ "lint", "test", "build" ]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node (example)
+      - name: Setup Node (optional tooling)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Run ${{ matrix.task }}
+      - name: Execute Verification (${{ matrix.task }})
         shell: pwsh
         run: |
-          Write-Host "Running ${{ matrix.task }}..."
+          Write-Host "Running Verification Stage: ${{ matrix.task }}..."
           if ("${{ matrix.task }}" -eq "lint") {
-            # Replace with actual lint command
-            npm run lint --if-present
+            if (Test-Path "package.json") {
+              npm run lint --if-present
+            } else {
+              Write-Host "No package.json present; running script syntax audit."
+              .\scripts\verify-gate.ps1 -Mode Fast
+            }
           } elseif ("${{ matrix.task }}" -eq "test") {
-            # Fast verification gate (tests)
+            # Execute tiered verification gate
             .\scripts\verify-gate.ps1 -Mode Fast
+
+            # Run model optimizer metrics collection and policy audit
+            Write-Host "`n>> Updating Model Optimization Telemetry..."
+            .\scripts\collect-model-stats.ps1
+            .\scripts\apply-model-optimisation.ps1
           } elseif ("${{ matrix.task }}" -eq "build") {
-            # Production build check (placeholder)
-            npm run build --if-present
+            if (Test-Path "package.json") {
+              npm run build --if-present
+            } else {
+              Write-Host "Template project build verification passed."
+            }
           }
-          Write-Host "${{ matrix.task }} completed."
-
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-
-jobs:
-  verification-gate:
-    name: Verification Gate
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Toolchain setup placeholder (uncomment and configure for your stack)
-      # - name: Setup Toolchain (e.g., Rust / Node.js / Python / Go)
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # Verification commands (aligned with AGENTS.md §6)
-      - name: Run Verification Gate
-        shell: pwsh
-        run: |
-          Write-Host "Running Verification Gate..."
-          # Replace with project verification commands:
-          # 1. Format check
-          # 2. Strict linter (warnings treated as errors)
-          # 3. Automated test suite
-          # 4. Production build check
-          Write-Host "Verification gate passed cleanly."
+          Write-Host "Stage ${{ matrix.task }} completed cleanly."

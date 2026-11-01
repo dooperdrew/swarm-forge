@@ -1,0 +1,46 @@
+{
+    "pro":  {
+                "SuccessRate":  1,
+                "Failures":  0,
+                "TotalDurationSecs":  0,
+                "LastUpdated":  "2026-11-01 23:31:34",
+                "TotalTokens":  0,
+                "AvgTokens":  0,
+                "AvgDurationSecs":  0,
+                "Successes":  0,
+                "Runs":  0
+            },
+    "flash":  {
+                  "SuccessRate":  1,
+                  "Failures":  0,
+                  "TotalDurationSecs":  0,
+                  "LastUpdated":  "2026-11-01 23:31:34",
+                  "TotalTokens":  0,
+                  "AvgTokens":  0,
+                  "AvgDurationSecs":  0,
+                  "Successes":  0,
+                  "Runs":  0
+              },
+    "---":  {
+                "SuccessRate":  0.5,
+                "Failures":  2,
+                "TotalDurationSecs":  4,
+                "LastUpdated":  "2026-11-01 23:32:05",
+                "TotalTokens":  1000,
+                "AvgTokens":  250,
+                "AvgDurationSecs":  1,
+                "Successes":  2,
+                "Runs":  4
+            },
+    "flash_lite":  {
+                       "SuccessRate":  1,
+                       "Failures":  0,
+                       "TotalDurationSecs":  0,
+                       "LastUpdated":  "2026-11-01 23:31:34",
+                       "TotalTokens":  0,
+                       "AvgTokens":  0,
+                       "AvgDurationSecs":  0,
+                       "Successes":  0,
+                       "Runs":  0
+                   }
+}
