@@ -10,6 +10,48 @@ permissions:
   contents: read
 
 jobs:
+  verification:
+    name: Verification Gate
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        task: [ "lint", "test", "build" ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node (example)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run ${{ matrix.task }}
+        shell: pwsh
+        run: |
+          Write-Host "Running ${{ matrix.task }}..."
+          if ("${{ matrix.task }}" -eq "lint") {
+            # Replace with actual lint command
+            npm run lint --if-present
+          } elseif ("${{ matrix.task }}" -eq "test") {
+            # Fast verification gate (tests)
+            .\scripts\verify-gate.ps1 -Mode Fast
+          } elseif ("${{ matrix.task }}" -eq "build") {
+            # Production build check (placeholder)
+            npm run build --if-present
+          }
+          Write-Host "${{ matrix.task }} completed."
+
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
   verification-gate:
     name: Verification Gate
     runs-on: windows-latest

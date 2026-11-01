@@ -65,6 +65,7 @@ flowchart TD
 ```
 
 Detailed guides for each document are available in the [Documentation Guide](docs/README.md).
+- See the **Skill Scope Guide** for managing local vs global skills: [docs/skill-scope.md](docs/skill-scope.md)
 
 ---
 

@@ -28,7 +28,7 @@ Whenever the user corrects, redirects, or clarifies a requirement:
 
 ## 4. Roles (multi-agent)
 - **Lead agent (sole committer):** Antigravity interactive session. The **only** entity allowed to `git commit`, `git push`, tag, release, merge PRs, or close issues. Plans parallel work, creates bounded tasks in GitHub Issues, reviews worker/Copilot output, runs the verification gate, and syncs docs.
-- **Worker subagents (`project-worker`):** Autonomous local subagents working in isolated branch workspaces (`Workspace: "branch"`) on **disjoint files**. **Forbidden:** `git commit`, `git push`, `git checkout main`, closing issues. They deliver results via the completion report in §8.
+- **Worker subagents (`project-worker`):** Autonomous local subagents running in isolated branch workspaces (`Workspace: "branch"`) on **disjoint files**. They are invoked with the lightweight `flash_lite` model by default to minimise memory and token consumption. **Forbidden:** `git commit`, `git push`, `git checkout main`, closing issues. They deliver results via the completion report in §8.
 - **Cloud Worker agent (GitHub Copilot Agent):** Operates asynchronously in GitHub Cloud or IDE on bounded issues created via `.github/ISSUE_TEMPLATE/agent_task.yml`. Bound by `.github/copilot-instructions.md`. Delivers work exclusively via **Draft Pull Requests** on `task/<issue-id>-<description>`. **Forbidden:** pushing directly to `main`, merging PRs, or closing issues.
 - Worker role names follow `<Tier>-<Domain>-<Milestone>` (e.g. `T1-Core-M1`).
 
