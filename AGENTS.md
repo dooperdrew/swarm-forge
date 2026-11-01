@@ -42,23 +42,24 @@ Whenever the user corrects, redirects, or clarifies a requirement:
 Fallback order: `inherit` → `pro` → `flash` → `flash_lite`. Every fallback **must** be logged in
 `docs/model-fallback-log.md`, and a review task for it goes into the hardening milestone.
 
-## 6. Task lifecycle
-**Before:** find the task in the roadmap, restate the task + tier + target files + acceptance criteria, and check that `git status` is clean. Ensure toolchain PATH is initialized.
-**During:** respect the hard rules (§7). Unverified assumptions are marked 🔬 and probed, not guessed. Decouple headless tests from physical QA (keep manual QA as Pending).
-**Draft PR Review (for Copilot / Worker tasks):** Lead pulls branch locally, runs the full verification gate, inspects diff for ownership and safety invariants, refines if needed, merges to `main`, and closes the corresponding issue.
-**Gate (must pass before finishing):**
-```bash
-{{VERIFICATION_GATE_COMMANDS}}
-# Examples:
-# Rust: cargo fmt -- --check; cargo clippy -D warnings; cargo test --workspace; cargo build --release
-# TypeScript / Web: npm run lint; npm test; npm run build
-# Python: ruff check .; ruff format --check; pytest; uv build
+## 6. Task lifecycle & Tiered Verification Gate
+**Before:** find the task in the roadmap, verify disjoint file ownership, restate the task + tier + target files + acceptance criteria, and check that `git status` is clean. For parallel tasks, spawn an isolated branch or worktree (`powershell -ExecutionPolicy Bypass -File .\scripts\manage-worktree.ps1 -Action New -Task <id>`). Ensure toolchain PATH is initialized.
+**During:** respect the hard rules (§7). Unverified assumptions are marked 🔬 and probed, not guessed. Decouple headless tests from physical QA (keep manual QA as Pending). Workers validate their intermediate changes using the **Fast Gate**:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\verify-gate.ps1 -Mode Fast
+```
+**Draft PR / Worker Review:** Lead pulls branch or reviews worktree (`powershell -ExecutionPolicy Bypass -File .\scripts\manage-worktree.ps1 -Action Gate -Task <id> -Mode Full`), inspects diff for ownership and safety invariants, refines if needed, merges to `main` via `manage-worktree.ps1 -Action Merge` or GitHub PR, and closes the corresponding issue.
+**Gate (must pass before finishing / committing to main):**
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\verify-gate.ps1 -Mode Full
 ```
 **After (lead only):** tick the roadmap box (date + commit), add a CHANGELOG entry, update docs/ADRs if the design changed,
 add any lesson to `docs/lessons-learned.md`, commit (`M<x>.<y>: <summary>`), push, and update the issue.
 
 ## 7. Hard rules
 {{PROJECT_HARD_RULES — performance budgets, safety constraints, forbidden techniques, security rules}}
+- **Disjoint File Ownership for Parallel Tasks:** Tasks marked `⇉` MUST define explicit owned files (`src/<module>/**`). Workers must never edit files outside their declared ownership boundary. Cross-cutting shared files (e.g. `main.rs`, `index.ts`, `app.py`, shared config) are modified exclusively by the Lead Agent.
+- **Parallel Test Execution & Caching:** Automated test suites must utilize parallel workers to minimize waiting latency (`cargo test -- --test-threads=auto`, `pytest -n auto`, `vitest --threads`). Use build toolchain caching (`sccache` for Rust, `uv` cache for Python, npm cache for Node).
 - **GitHub Governance (Milestones, Issues & Releases):** Every roadmap milestone (`M0`..`Mn`) MUST have a corresponding GitHub Milestone and tracked GitHub Issues. Completed tasks close their issue with a commit/release reference; pending hardware/manual QA stays open in its milestone. Every release MUST attach a pre-built downloadable bundle (`.zip` / installer) on GitHub Releases via `gh release create` (or `.github/workflows/release.yml`) even while physical hardware QA remains `Pending`.
 - **Single-Binary & Setup Ergonomics:** Release bundles must NEVER contain multiple confusing executables. Distribute a single standalone installer (`<AppName>-Setup.exe`) and a clean portable archive containing only the primary executable, assets, and uninstaller. Launching the main executable directly must always open settings/main UI without blocking or erroring.
 - **Documentation Parity Rule:** Whenever packaging, installation, or distribution capabilities are added or updated, `README.md` (`## 📥 Installation & Distribution Options`) and `docs/user-guide.md` MUST be updated in the same commit to document all distribution channels (WinGet, Scoop, Setup Wizard, Portable ZIP) and uninstallation steps.

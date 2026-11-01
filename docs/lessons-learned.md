@@ -6,6 +6,8 @@ Generic lessons (not tied to this project) are tagged **[KIT]** and get promoted
 
 | Date | Context (task / conversation) | What happened | Rule / fix adopted | Scope |
 |---|---|---|---|---|
+| 2026-11-01 | Task Parallelization & Worktree Isolation | Running parallel tasks or reviewing Copilot PRs in the primary workspace caused branch churn and build invalidation | Use isolated sibling git worktrees (`.worktrees/task-<id>` via `scripts/manage-worktree.ps1`) for concurrent worker execution | [KIT] |
+| 2026-11-01 | Verification Gate Latency & Run Optimization | Running full clean builds and all test suites on every minor worker task created excessive waiting latency | Implement a Tiered Verification Gate (`scripts/verify-gate.ps1` with `-Mode Fast` for workers and `-Mode Full` for Sole Committer) | [KIT] |
 | 2026-11-01 | Antigravity Skill Scoping & Token Economics | Global skills in `~/.gemini/config/skills/` load in every session and exhaust the 20,000 token budget | Default all skills to workspace scope (`.agents/skills/` - 0 global tokens); use `scripts/manage-skill.ps1` to promote only cross-project utilities globally | [KIT] |
 | 2026-11-01 | PowerShell 5.1 Script Encoding & Emojis | Multi-byte UTF-8 emojis in `.ps1` files parsed as ANSI apostrophes in Windows PowerShell 5.1, breaking string termination | Use clean ASCII markers (`[OK]`, `[LOCAL]`, `[GLOBAL]`) in PowerShell automation scripts instead of multi-byte Unicode emojis | [KIT] |
 | 2026-10-31 | packaging & release | Releasing multiple executables in distribution bundles confused users and complicated shortcuts | Distribute a single standalone setup executable (`<AppName>-Setup.exe`) and a clean single-binary portable zip | [KIT] |

@@ -120,6 +120,8 @@ Tasks are categorized by complexity to optimize both execution speed and cogniti
 - **No Guesswork:** Never present unverified assumptions (hardware behaviors, external APIs, network latency) as fact.
 - **Spikes (🔬):** Unverified technical points are isolated as Milestone 0 spikes and documented with real outputs in [`docs/m0-spike-findings.md`](docs/m0-spike-findings.md).
 - **Autonomous UI & A11y QA (`ui-qa-tester`):** Test UI screens and accessibility non-intrusively via `qa-session.template.toml` and `scripts/run-qa.ps1`.
+- **Isolated Parallel Worktrees (`scripts/manage-worktree.ps1`):** Instantly spawn, test, and merge isolated sibling worktrees (`.worktrees/task-<id>`) so multiple agents or developers run parallel tasks with zero git collisions.
+- **Tiered Verification Gate (`scripts/verify-gate.ps1`):** Fast incremental pre-commit checks (`-Mode Fast`) for rapid worker subagent iteration, and comprehensive build/lint/test release checks (`-Mode Full`) for the Lead Sole Committer.
 - **Dynamic Skill Scoping (`manage-skill.ps1`):** Keep agent skills local to the workspace (`.agents/skills/`) to consume **0 global customization tokens**, or promote proven skills globally (`~/.gemini/config/skills/`) on demand.
 - **Decoupled QA:** Automated invariant tests run on every commit; manual or hardware testing stays marked **`Pending`** in [`docs/06-qa-and-validation.md`](docs/06-qa-and-validation.md) until empirically confirmed. Community testers report results via [`.github/ISSUE_TEMPLATE/qa_verification.yml`](.github/ISSUE_TEMPLATE/qa_verification.yml).
 
@@ -188,10 +190,12 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   ├── install.ps1                 # Zero-elevation user-level installer
 │   ├── installer.iss               # Inno Setup native Windows installer template
 │   ├── manage-skill.ps1            # Scaffolds, lists, promotes, and demotes skills (Local vs Global)
+│   ├── manage-worktree.ps1         # Automates isolated Git worktrees for parallel agent tasks
 │   ├── package-release.ps1         # Automated release bundler & SHA-256 calculator
 │   ├── run-qa.ps1                  # Autonomous UI crawl launcher using ui-qa-tester
 │   ├── setup-wizard.ps1            # Graphical & console guided Windows setup wizard
-│   └── uninstall.ps1               # Clean application and shortcut uninstaller
+│   ├── uninstall.ps1               # Clean application and shortcut uninstaller
+│   └── verify-gate.ps1             # Tiered verification gate runner (Fast incremental vs Full)
 ├── setup.cmd                       # Double-clickable Windows setup launcher
 ├── qa-session.template.toml        # Automated UI & accessibility crawl configuration for ui-qa-tester
 ├── .gitignore                      # Multi-stack git ignore rules (Rust, Node, Python)
