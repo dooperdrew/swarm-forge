@@ -116,10 +116,11 @@ Tasks are categorized by complexity to optimize both execution speed and cogniti
 
 ---
 
-### 4. Claims Follow Evidence
+### 4. Claims Follow Evidence & Autonomous QA
 - **No Guesswork:** Never present unverified assumptions (hardware behaviors, external APIs, network latency) as fact.
 - **Spikes (🔬):** Unverified technical points are isolated as Milestone 0 spikes and documented with real outputs in [`docs/m0-spike-findings.md`](docs/m0-spike-findings.md).
-- **Decoupled QA:** Headless automated mock/invariant tests run on every commit; manual, UI, or hardware testing stays marked **`Pending`** in [`docs/06-qa-and-validation.md`](docs/06-qa-and-validation.md) until empirically confirmed by the user. Community testers report results via [`.github/ISSUE_TEMPLATE/qa_verification.yml`](.github/ISSUE_TEMPLATE/qa_verification.yml).
+- **Autonomous UI & A11y QA (`ui-qa-tester`):** Test UI screens and accessibility non-intrusively via `qa-session.template.toml` and `scripts/run-qa.ps1`.
+- **Decoupled QA:** Automated invariant tests run on every commit; manual or hardware testing stays marked **`Pending`** in [`docs/06-qa-and-validation.md`](docs/06-qa-and-validation.md) until empirically confirmed. Community testers report results via [`.github/ISSUE_TEMPLATE/qa_verification.yml`](.github/ISSUE_TEMPLATE/qa_verification.yml).
 
 ---
 
@@ -144,6 +145,11 @@ The repository includes pre-configured automation scripts in `scripts/`:
 ## 📂 Repository Tour
 
 ```text
+├── .agents/                        # 🆕 Workspace-scoped agent skills & rules (zero global token cost)
+│   ├── skills/
+│   │   └── project-qa/SKILL.md     # Workspace skill for running autonomous UI & accessibility QA
+│   └── rules/
+│       └── README.md               # Guide to creating project-isolated agent rules
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── agent_task.yml          # Form template for delegating tasks to Copilot / subagents
@@ -180,10 +186,12 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   ├── install.ps1                 # Zero-elevation user-level installer
 │   ├── installer.iss               # Inno Setup native Windows installer template
 │   ├── package-release.ps1         # Automated release bundler & SHA-256 calculator
+│   ├── run-qa.ps1                  # Autonomous UI crawl launcher using ui-qa-tester
 │   ├── setup-wizard.ps1            # Graphical & console guided Windows setup wizard
 │   └── uninstall.ps1               # Clean application and shortcut uninstaller
 ├── setup.cmd                       # Double-clickable Windows setup launcher
 ├── qa-session.template.toml        # Automated UI & accessibility crawl configuration for ui-qa-tester
+├── .gitignore                      # Multi-stack git ignore rules (Rust, Node, Python)
 ├── AGENTS.md                       # Binding operational rules and verification gate
 ├── CHANGELOG.md                    # Chronological milestone changelog
 ├── CONTRIBUTING.md                 # Contribution, branching, and multi-agent pair programming guide
