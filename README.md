@@ -183,6 +183,7 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   ├── setup-wizard.ps1            # Graphical & console guided Windows setup wizard
 │   └── uninstall.ps1               # Clean application and shortcut uninstaller
 ├── setup.cmd                       # Double-clickable Windows setup launcher
+├── qa-session.template.toml        # Automated UI & accessibility crawl configuration for ui-qa-tester
 ├── AGENTS.md                       # Binding operational rules and verification gate
 ├── CHANGELOG.md                    # Chronological milestone changelog
 ├── CONTRIBUTING.md                 # Contribution, branching, and multi-agent pair programming guide
