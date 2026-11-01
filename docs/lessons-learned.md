@@ -6,6 +6,8 @@ Generic lessons (not tied to this project) are tagged **[KIT]** and get promoted
 
 | Date | Context (task / conversation) | What happened | Rule / fix adopted | Scope |
 |---|---|---|---|---|
+| 2026-11-01 | Antigravity Skill Scoping & Token Economics | Global skills in `~/.gemini/config/skills/` load in every session and exhaust the 20,000 token budget | Default all skills to workspace scope (`.agents/skills/` - 0 global tokens); use `scripts/manage-skill.ps1` to promote only cross-project utilities globally | [KIT] |
+| 2026-11-01 | PowerShell 5.1 Script Encoding & Emojis | Multi-byte UTF-8 emojis in `.ps1` files parsed as ANSI apostrophes in Windows PowerShell 5.1, breaking string termination | Use clean ASCII markers (`[OK]`, `[LOCAL]`, `[GLOBAL]`) in PowerShell automation scripts instead of multi-byte Unicode emojis | [KIT] |
 | 2026-10-31 | packaging & release | Releasing multiple executables in distribution bundles confused users and complicated shortcuts | Distribute a single standalone setup executable (`<AppName>-Setup.exe`) and a clean single-binary portable zip | [KIT] |
 | 2026-10-31 | UX & In-App Maintenance | Users had no way inside GUI applications to re-run setup, create shortcuts, or trigger uninstallation | Provide in-app maintenance controls (shortcuts, repair, uninstall) and progressive 5-step Setup Wizard | [KIT] |
 | 2026-10-27 | Autonomous UI & A11y QA (`ui-qa-tester`) | Embedded web renderers (WebView2/Chromium) delay UIA tree hydration and ignore input messages sent to top-level frames | Walk child HWND trees (depth $\ge$ 15), warm up UIA with a brief 300ms pause, convert coordinates via `ScreenToClient(render_hwnd)`, and calculate contrast on small labels | [KIT] |

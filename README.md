@@ -120,6 +120,7 @@ Tasks are categorized by complexity to optimize both execution speed and cogniti
 - **No Guesswork:** Never present unverified assumptions (hardware behaviors, external APIs, network latency) as fact.
 - **Spikes (🔬):** Unverified technical points are isolated as Milestone 0 spikes and documented with real outputs in [`docs/m0-spike-findings.md`](docs/m0-spike-findings.md).
 - **Autonomous UI & A11y QA (`ui-qa-tester`):** Test UI screens and accessibility non-intrusively via `qa-session.template.toml` and `scripts/run-qa.ps1`.
+- **Dynamic Skill Scoping (`manage-skill.ps1`):** Keep agent skills local to the workspace (`.agents/skills/`) to consume **0 global customization tokens**, or promote proven skills globally (`~/.gemini/config/skills/`) on demand.
 - **Decoupled QA:** Automated invariant tests run on every commit; manual or hardware testing stays marked **`Pending`** in [`docs/06-qa-and-validation.md`](docs/06-qa-and-validation.md) until empirically confirmed. Community testers report results via [`.github/ISSUE_TEMPLATE/qa_verification.yml`](.github/ISSUE_TEMPLATE/qa_verification.yml).
 
 ---
@@ -147,7 +148,8 @@ The repository includes pre-configured automation scripts in `scripts/`:
 ```text
 ├── .agents/                        # 🆕 Workspace-scoped agent skills & rules (zero global token cost)
 │   ├── skills/
-│   │   └── project-qa/SKILL.md     # Workspace skill for running autonomous UI & accessibility QA
+│   │   ├── project-qa/SKILL.md     # Workspace skill for running autonomous UI & accessibility QA
+│   │   └── skill-manager/SKILL.md  # Workspace skill for scoping, promoting & demoting agent skills
 │   └── rules/
 │       └── README.md               # Guide to creating project-isolated agent rules
 ├── .github/
@@ -185,6 +187,7 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   ├── generate-manifests.ps1      # WinGet & Scoop manifest generator
 │   ├── install.ps1                 # Zero-elevation user-level installer
 │   ├── installer.iss               # Inno Setup native Windows installer template
+│   ├── manage-skill.ps1            # Scaffolds, lists, promotes, and demotes skills (Local vs Global)
 │   ├── package-release.ps1         # Automated release bundler & SHA-256 calculator
 │   ├── run-qa.ps1                  # Autonomous UI crawl launcher using ui-qa-tester
 │   ├── setup-wizard.ps1            # Graphical & console guided Windows setup wizard
