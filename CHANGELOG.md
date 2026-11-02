@@ -2,6 +2,12 @@
 
 Chronological record of milestones, decisions and discoveries. Newest first.
 
+## 2026-11-02 — QA Crawler Contract Alignment & Autonomous Self-Test Integration
+- **CLI & Actuator Contract Synchronization:** Aligned `scripts/run-qa.ps1` with `ui-qa-tester` CLI subcommands (`run` with backward-compatible `crawl` alias). Added support for `-SelfTest`, `-Exe`, `-Title`, `-MaxSteps`, and `-SyncGithubIssues` parameter forwarding.
+- **Config Deserialization Resiliency:** Added top-level `goals = []` in `qa-session.template.toml` and `#[serde(default)]` in `ui_qa_core::config::QaSessionConfig` to ensure optional scenarios parse seamlessly without missing field errors.
+- **Robust Path & Binary Discovery:** Hardened executable resolution in `scripts/run-qa.ps1` against whitespace, null inputs, and relative paths across multi-repo workspaces.
+- **Autonomous QA Skill Update:** Updated `.agents/skills/project-qa/SKILL.md` with verified execution options, self-test verification workflows, and documentation evidence procedures.
+
 ## 2026-11-01 — Autonomous AI Model Optimization, Parallel Worker Swarms & Complete Pipeline Hardening
 - **Autonomous Model Optimizer (`.agents/skills/model-optimizer`):** Introduced a continuous learning engine with `scripts/collect-model-stats.ps1`, `scripts/apply-model-optimisation.ps1`, and background daemon `scripts/start-model-optimiser.ps1`. Automatically benchmarks subagent latency, token consumption, and success rates ($\ge 95\%$) in `.agents/config/model-stats.json`, dynamically promoting low-token models (`flash_lite`) in `.agents/config/model-default.toml` and reporting history in `docs/model-optimization-report.md`.
 - **Parallel Subagent Orchestration (`scripts/run-parallel-agents.ps1`):** Created a turnkey multi-worker launcher that spawns isolated Git worktrees (`.worktrees/<task-id>`), enforces disjoint file ownership, dispatches lightweight subagent workers, and verifies quality via the fast gate.
