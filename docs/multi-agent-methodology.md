@@ -12,7 +12,7 @@ When building complex software systems with autonomous AI coding agents, enginee
 1. **Context Window Exhaustion & Cognitive Drift:** A single agent attempting to hold the entire system architecture, UI state, low-level platform APIs, and build scripts simultaneously exhausts its context window, leading to forgotten constraints, hallucinations, and regression bugs.
 2. **Sequential Latency & Token Inefficiency:** Running boilerplate generation or docs updates on large, slow, high-reasoning models wastes tokens and time, while using small models on safety-critical, concurrent, or performance-sensitive paths introduces severe bugs.
 
-This repository implements a production-grade **Hub-and-Spoke (Lead Orchestrator & Parallel Worker)** architecture. By decomposing projects into **strictly bounded, disjoint work packages** and orchestrating multi-tiered AI models across local branch worktrees and cloud agent workers, teams achieve rapid parallel development with **zero git merge collisions, deterministic verification gates, and complete traceability**.
+SwarmForge implements a production-grade **Hub-and-Spoke Swarm (Lead Orchestrator & Parallel Worker Swarms)** architecture. By decomposing projects into **strictly bounded, disjoint work packages** and orchestrating multi-tiered AI models across local branch worktrees and cloud agent workers, teams achieve rapid parallel development with **zero git merge collisions, deterministic verification gates, and complete traceability**.
 
 ```mermaid
 flowchart TD

@@ -1,15 +1,15 @@
 <p align="center">
-  <img src=".github/assets/hero-banner.svg" alt="Autonomous Agent Operating System & Spec-First Framework" width="100%">
+  <img src=".github/assets/hero-banner.svg" alt="SwarmForge — Spec-First Autonomous Multi-Agent Engineering Forge" width="100%">
 </p>
 
-# ⚡ Autonomous Agent Operating System (OS) & Spec-First Framework
+# ⚡ SwarmForge
 
 <p align="center">
-  <strong>The production-grade, spec-first engineering framework for autonomous AI coding agents and human engineers.</strong>
+  <strong>The spec-first engineering forge for autonomous AI coding swarms and human engineers.</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/DooperDrew/project-template/generate">
+  <a href="https://github.com/dooperdrew/swarm-forge/generate">
     <img src="https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Use this template">
   </a>
 </p>
@@ -28,17 +28,21 @@
 
 ---
 
-## 🌟 Why This Framework?
+## 🌟 The SwarmForge Narrative & Philosophy
 
-Modern AI coding agents (Antigravity, GitHub Copilot, Claude Code, Cursor) write code with unprecedented speed. However, without strict architectural scaffolding and boundary controls, real-world repositories rapidly succumb to systemic failure modes:
+Modern software development with autonomous AI coding agents (Antigravity, GitHub Copilot, Claude Code, Cursor) is blazing fast. However, without strict architectural discipline and boundary enforcement, unguided agents rapidly induce systemic entropy:
 
-* **🧠 Context Drift:** Agents lose track of architecture decisions, schemas, and non-goals made across previous chat sessions.
-* **🔬 Hallucinated Assumptions:** Agents guess unverified hardware behaviors, foreign APIs, and network protocols as fact.
-* **💥 Git History Collision:** Unconstrained agents edit overlapping files, overwrite each other's changes, and break `main`.
-* **💸 Token & Quota Exhaustion:** Dispatching heavy, expensive frontier reasoning models to trivial unit tests, docs, or boilerplate tasks burns through token budgets.
-* **🌫️ Siloed Ephemeral Knowledge:** Lessons learned and bug corrections evaporate the moment a conversation ends.
+* **🧠 Context Drift:** Agents lose track of architecture decisions, data schemas, and non-goals established in earlier conversations.
+* **🔬 Hallucinated Assumptions:** Agents fabricate unverified hardware behaviors, remote APIs, and network protocols as fact.
+* **💥 Git Collision Chaos:** Unbounded agents edit overlapping files, overwrite each other's work, and break `main`.
+* **💸 Token Burn:** Dispatching heavyweight frontier reasoning models to trivial unit tests, documentation, or boilerplate exhausts budgets.
+* **🌫️ Ephemeral Learning:** Critical debugging lessons and edge-case fixes evaporate the moment a conversation ends.
 
-**This framework eliminates these failure modes** by establishing a deterministic, version-controlled **Operating System** directly inside your repository.
+### The Swarm & The Forge
+**SwarmForge eliminates this entropy through two complementary forces:**
+
+1. **🐝 The Swarm:** A coordinated division of labor. A Lead Architect agent (**Sole Committer**) decomposes milestones into bounded tasks with strict disjoint file ownership. Autonomous worker swarms (`project-worker`, Copilot Cloud workers) execute concurrently in **isolated git worktrees** using cost-optimized models (`flash_lite`).
+2. **🔥 The Forge:** An unyielding quality barrier. Every change is tempered through living markdown specifications (`docs/`), sub-second tiered verification gates (`verify-gate.ps1`), non-intrusive UI QA (`ui-qa-tester`), and continuous persistent learning (`docs/lessons-learned.md`).
 
 ---
 

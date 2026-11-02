@@ -1,6 +1,6 @@
-# Contributing to Project Template
+# Contributing to SwarmForge
 
-Thank you for your interest in contributing! This project follows a spec-first, agent-ready development methodology designed to support seamless collaboration between human developers, local AI pair programmers (Antigravity), and cloud worker agents (GitHub Copilot).
+Thank you for your interest in contributing! SwarmForge follows a spec-first, multi-agent development methodology designed to support seamless collaboration between human developers, local AI orchestrators (Antigravity), and cloud worker agents (GitHub Copilot, Claude Code, Cursor).
 
 ---
 

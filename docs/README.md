@@ -1,6 +1,6 @@
-# Project Kickstart Documentation System
+# SwarmForge Specification & Governance System
 
-This directory contains the specification and governance documents that define the lifecycle of a software project built with the **Project Kickstart** methodology.
+This directory contains the living specification and governance framework that drives projects forged with **SwarmForge**.
 
 In an agent-assisted or autonomous engineering environment, **the codebase specifications are the primary interface between human intent and AI execution**. Keeping technical truth in version-controlled markdown files prevents context drift, hallucinated constraints, architectural fragmentation, and abandoned conventions.
 

@@ -2,6 +2,11 @@
 
 Chronological record of milestones, decisions and discoveries. Newest first.
 
+## 2026-11-02 — Project Rebranding & Identity Forge: SwarmForge (⚡ SwarmForge)
+- **Brand Evolution (`swarm-forge`):** Officially rebranded the repository to **SwarmForge** (`https://github.com/dooperdrew/swarm-forge`), transitioning the narrative from a passive project template into an active, spec-first engineering forge for autonomous AI coding swarms.
+- **Narrative Philosophy (The Swarm & The Forge):** Codified the dual core forces in `README.md`: The Swarm (autonomous parallel workers in isolated git worktrees with disjoint boundaries) and The Forge (the living spec stack, sub-second tiered verification gates, automated token tuning, and non-intrusive UI QA).
+- **Asset & Ecosystem Synchronization:** Updated hero banner (`.github/assets/hero-banner.svg`), documentation system (`docs/README.md`), multi-agent methodology (`docs/multi-agent-methodology.md`), contributing guidelines (`CONTRIBUTING.md`), and verification gate audits (`scripts/verify-gate.ps1`).
+
 ## 2026-11-02 — GitHub Discoverability, Visual Branding & Community Health Elevation
 - **Visual Branding & Hero Banner (`.github/assets/hero-banner.svg`):** Designed an SVG vector hero banner and OpenGraph card articulating the Spec-First Operating System architecture, multi-agent workflows, and polyglot runtime support.
 - **Repository Metadata Alignment:** Expanded GitHub description to directly highlight autonomous multi-agent engineering, git worktrees, sub-second gates, and token tuning. Added 14 high-traffic discovery topics (reaching the 20-topic cap for GitHub Explore/SEO) and configured documentation homepage URL.

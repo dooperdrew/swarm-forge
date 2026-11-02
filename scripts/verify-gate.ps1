@@ -224,8 +224,8 @@ switch ($Stack) {
     }
 
     "Template" {
-        # Project Template Sanity Gate (No app code compiled yet)
-        Invoke-Stage "Template Scripts Syntax Audit" {
+        # SwarmForge Sanity Gate (No app code compiled yet)
+        Invoke-Stage "SwarmForge Scripts Syntax Audit" {
             $ScriptFiles = Get-ChildItem -Path (Join-Path $RepoRoot "scripts") -Filter "*.ps1"
             foreach ($file in $ScriptFiles) {
                 $errs = $null
