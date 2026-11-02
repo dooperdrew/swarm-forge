@@ -34,3 +34,9 @@
 *.exe binary
 *.dll binary
 *.db binary
+
+# GitHub Linguist Overrides:
+# Exclude framework orchestration harnesses and packaging scripts from language statistics
+scripts/** linguist-vendored
+*.iss linguist-vendored
+setup.cmd linguist-vendored

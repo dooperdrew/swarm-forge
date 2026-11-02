@@ -2,6 +2,13 @@
 
 Chronological record of milestones, decisions and discoveries. Newest first.
 
+## 2026-11-02 — GitHub Discoverability, Visual Branding & Community Health Elevation
+- **Visual Branding & Hero Banner (`.github/assets/hero-banner.svg`):** Designed an SVG vector hero banner and OpenGraph card articulating the Spec-First Operating System architecture, multi-agent workflows, and polyglot runtime support.
+- **Repository Metadata Alignment:** Expanded GitHub description to directly highlight autonomous multi-agent engineering, git worktrees, sub-second gates, and token tuning. Added 14 high-traffic discovery topics (reaching the 20-topic cap for GitHub Explore/SEO) and configured documentation homepage URL.
+- **Community Health & Standards (100%):** Added `CODE_OF_CONDUCT.md` (Contributor Covenant v2.1), unlocking 100% repository health score and priority discovery ranking in GitHub search.
+- **Linguist Language Stats Sanitization (`.gitattributes`):** Configured `linguist-vendored` overrides on automation harnesses (`scripts/`) and packaging scripts (`.iss`, `setup.cmd`), preventing GitHub from mislabeling the universal polyglot template as a PowerShell-only script utility.
+- **Agent Ecosystem Compatibility Matrix:** Updated `README.md` with an integration matrix detailing roles, mechanisms, and concurrency boundaries across Antigravity, GitHub Copilot, Claude Code, Cursor, and autonomous subagents.
+
 ## 2026-11-02 — QA Crawler Contract Alignment & Autonomous Self-Test Integration
 - **CLI & Actuator Contract Synchronization:** Aligned `scripts/run-qa.ps1` with `ui-qa-tester` CLI subcommands (`run` with backward-compatible `crawl` alias). Added support for `-SelfTest`, `-Exe`, `-Title`, `-MaxSteps`, and `-SyncGithubIssues` parameter forwarding.
 - **Config Deserialization Resiliency:** Added top-level `goals = []` in `qa-session.template.toml` and `#[serde(default)]` in `ui_qa_core::config::QaSessionConfig` to ensure optional scenarios parse seamlessly without missing field errors.

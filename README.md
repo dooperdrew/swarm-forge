@@ -1,27 +1,58 @@
-# 🚀 Project Template
+<p align="center">
+  <img src=".github/assets/hero-banner.svg" alt="Autonomous Agent Operating System & Spec-First Framework" width="100%">
+</p>
 
-[![Spec-First](https://img.shields.io/badge/Architecture-Spec--First-blue.svg)](docs/README.md)
-[![Agent-Ready](https://img.shields.io/badge/AI-Agent--Ready-success.svg)](AGENTS.md)
-[![Multi-Agent](https://img.shields.io/badge/Workflow-Antigravity%20%2B%20Copilot-orange.svg)](docs/multi-agent-methodology.md)
-[![Model-Optimized](https://img.shields.io/badge/Model-Self--Tuning-brightgreen.svg)](docs/model-optimization-report.md)
-[![Parallel-Worktrees](https://img.shields.io/badge/Worktrees-Isolated%20Parallel-teal.svg)](scripts/run-parallel-agents.ps1)
-[![CI/CD](https://img.shields.io/badge/GitHub-Actions%20CI%2FCD-2088FF.svg)](.github/workflows/ci.yml)
-[![Verification Gate](https://img.shields.io/badge/Quality-Gated-purple.svg)](AGENTS.md#6-task-lifecycle)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+# ⚡ Autonomous Agent Operating System (OS) & Spec-First Framework
 
-A battle-tested, **spec-first**, **agent-ready** project template engineered for high-velocity software development with autonomous AI coding agents (Antigravity, GitHub Copilot) and human engineers. Bootstrapped with the **Project Kickstart** methodology.
+<p align="center">
+  <strong>The production-grade, spec-first engineering framework for autonomous AI coding agents and human engineers.</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/DooperDrew/project-template/generate">
+    <img src="https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Use this template">
+  </a>
+</p>
+
+<p align="center">
+  <a href="docs/README.md"><img src="https://img.shields.io/badge/Architecture-Spec--First-blue.svg?style=flat-square" alt="Spec-First"></a>
+  <a href="AGENTS.md"><img src="https://img.shields.io/badge/AI-Agent--Ready-success.svg?style=flat-square" alt="Agent-Ready"></a>
+  <a href="docs/multi-agent-methodology.md"><img src="https://img.shields.io/badge/Workflow-Antigravity%20%2B%20Copilot-orange.svg?style=flat-square" alt="Multi-Agent"></a>
+  <a href="docs/model-optimization-report.md"><img src="https://img.shields.io/badge/Model-Self--Tuning-brightgreen.svg?style=flat-square" alt="Model-Optimized"></a>
+  <a href="scripts/run-parallel-agents.ps1"><img src="https://img.shields.io/badge/Worktrees-Isolated%20Parallel-teal.svg?style=flat-square" alt="Parallel-Worktrees"></a>
+  <a href="scripts/verify-gate.ps1"><img src="https://img.shields.io/badge/Verification-Sub--Second%20Gate-purple.svg?style=flat-square" alt="Verification Gate"></a>
+  <a href=".github/workflows/ci.yml"><img src="https://img.shields.io/badge/GitHub-Actions%20CI%2FCD-2088FF.svg?style=flat-square" alt="CI/CD"></a>
+  <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Community%20Health-100%25-brightgreen.svg?style=flat-square" alt="Community Health"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License: MIT"></a>
+</p>
 
 ---
 
-## 🌟 Why This Template?
+## 🌟 Why This Framework?
 
-Modern AI coding agents are exceptionally fast at writing code, but they frequently encounter systemic failure modes in real-world repositories:
-- **Context Drift:** Agents lose track of architecture decisions made 3 conversations ago.
-- **Hallucinated Constraints:** Guessing unverified external APIs or hardware capabilities.
-- **Chaos in Git History:** Uncontrolled parallel commits, broken main branches, and untracked rollbacks.
-- **Siloed Knowledge:** Corrections and lessons learned in one chat session evaporate in the next.
+Modern AI coding agents (Antigravity, GitHub Copilot, Claude Code, Cursor) write code with unprecedented speed. However, without strict architectural scaffolding and boundary controls, real-world repositories rapidly succumb to systemic failure modes:
 
-This template eliminates these bottlenecks by embedding **operational constraints, architectural boundaries, automated CI/CD gates, and continuous learning directly into the repository files**.
+* **🧠 Context Drift:** Agents lose track of architecture decisions, schemas, and non-goals made across previous chat sessions.
+* **🔬 Hallucinated Assumptions:** Agents guess unverified hardware behaviors, foreign APIs, and network protocols as fact.
+* **💥 Git History Collision:** Unconstrained agents edit overlapping files, overwrite each other's changes, and break `main`.
+* **💸 Token & Quota Exhaustion:** Dispatching heavy, expensive frontier reasoning models to trivial unit tests, docs, or boilerplate tasks burns through token budgets.
+* **🌫️ Siloed Ephemeral Knowledge:** Lessons learned and bug corrections evaporate the moment a conversation ends.
+
+**This framework eliminates these failure modes** by establishing a deterministic, version-controlled **Operating System** directly inside your repository.
+
+---
+
+## 🤖 Supported AI Agents & Ecosystem Matrix
+
+This framework is built for polyglot software development (Rust, TypeScript/React/Node, Python, Go) and coordinates seamlessly across all major AI coding environments:
+
+| Agent / Environment | Primary Role in Framework | Integration Mechanism | Concurrency Isolation |
+|---|---|---|---|
+| **Google Antigravity** | Lead Orchestrator & **Sole Committer** | Reads [`AGENTS.md`](AGENTS.md), drives milestones, runs verification gates | Interactive Lead Session |
+| **GitHub Copilot Agent** | Asynchronous Cloud Worker | Consumes [`.github/ISSUE_TEMPLATE/agent_task.yml`](.github/ISSUE_TEMPLATE/agent_task.yml), adheres to [`.github/copilot-instructions.md`](.github/copilot-instructions.md) | Draft PRs (`task/<issue>-<desc>`) |
+| **Claude Code** | Terminal & CLI Worker | Follows bounded tasks in [`docs/05-roadmap.md`](docs/05-roadmap.md), executes pre-commit gates | Isolated git worktrees (`.worktrees/`) |
+| **Cursor / Windsurf** | In-Editor Composer & Agent | Enforces module boundaries in [`docs/03-architecture.md`](docs/03-architecture.md) | Branch / Worktree |
+| **Autonomous Subagents** | Lightweight Worker Swarms (`project-worker`) | Dispatched via `scripts/run-parallel-agents.ps1`, routed dynamically to `flash_lite` | Disjoint file ownership & worktrees |
 
 ---
 
@@ -162,6 +193,8 @@ The repository includes pre-configured automation scripts in `scripts/`:
 │   └── rules/
 │       └── README.md               # Guide to creating project-isolated agent rules
 ├── .github/
+│   ├── assets/
+│   │   └── hero-banner.svg         # Crisp vector architecture and social hero banner
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── agent_task.yml          # Form template for delegating tasks to Copilot / subagents
 │   │   ├── agent_task.md           # Markdown template fallback for agent task issues
@@ -214,6 +247,7 @@ The repository includes pre-configured automation scripts in `scripts/`:
 ├── .gitignore                      # Multi-stack git ignore rules (Rust, Node, Python)
 ├── AGENTS.md                       # Binding operational rules and verification gate
 ├── CHANGELOG.md                    # Chronological milestone changelog
+├── CODE_OF_CONDUCT.md              # Contributor Covenant v2.1 code of conduct
 ├── CONTRIBUTING.md                 # Contribution, branching, and multi-agent pair programming guide
 ├── LICENSE                         # MIT License
 ├── SECURITY.md                     # Security policy, memory/platform guarantees, vulnerability reporting
