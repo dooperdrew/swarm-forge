@@ -1,7 +1,7 @@
 # =============================================================================
-# ui-qa-tester Session Configuration Template
+# GhostQA (ui-qa-tester) Session Configuration Template
 # Repository: {{REPO_URL}}
-# Run with: ui-qa-cli run --config qa-session.toml (or via ui-qa-ui Dashboard)
+# Run with: ghost-qa-cli run --config qa-session.toml (or ui-qa-cli run)
 # =============================================================================
 
 session_name = "{{PROJECT_NAME}}-qa"

@@ -1,11 +1,11 @@
 ---
 name: project-qa
-description: Autonomous UI, accessibility, and hardware-in-the-loop QA testing for this project using ui-qa-tester. Use when verifying UI screens, finding dead buttons, auditing contrast and keyboard navigation, or generating empirical verification evidence for docs/06-qa-and-validation.md.
+description: Autonomous UI, accessibility, and hardware-in-the-loop QA testing for this project using GhostQA (ui-qa-tester). Use when verifying UI screens, finding dead buttons, auditing contrast and keyboard navigation, or generating empirical verification evidence for docs/06-qa-and-validation.md.
 ---
 
 # Project QA & Autonomous Verification Skill
 
-This workspace-scoped skill guides the agent in conducting non-intrusive UI testing, accessibility audits, and empirical verification using **`ui-qa-tester`**.
+This workspace-scoped skill guides the agent in conducting non-intrusive UI testing, accessibility audits, and empirical verification using **GhostQA (`ghost-qa` / `ui-qa-tester`)**.
 
 ---
 
